@@ -87,6 +87,7 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
           if (i + 1 != widget.fields) {
             FocusScope.of(context).requestFocus(_focusNodes[i + 1]);
           } else {
+            FocusScope.of(context).requestFocus(null);
             if(widget.clearTextAfterDone)
               clearTextFields();
             FocusScope.of(context).requestFocus(_focusNodes[0]);
@@ -94,6 +95,7 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
           }
         },
         onSubmitted: (String str) {
+          FocusScope.of(context).requestFocus(null);
           if(widget.clearTextAfterDone)
             clearTextFields();
           widget.onSubmit(_pin.join());
