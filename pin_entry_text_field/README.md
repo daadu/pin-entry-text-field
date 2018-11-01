@@ -86,6 +86,11 @@ All customizable attributes for PinEntryTextField
         <td>false</td>
         <td>Determines if the TextField should have an OutlineInputBorder at the 4 edges, or just a bottom underline</td>
     </tr>
+    <tr>
+        <td>clearTextAfterDone</td>
+        <td>true</td>
+        <td>Determines if to clear the text when user types in the last pin or hit done key</td>
+    </tr>
     
 </table>
 

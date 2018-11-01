@@ -9,6 +9,7 @@ class PinEntryTextField extends StatefulWidget {
   final fontSize;
   final isTextObscure;
   final showFieldAsBox;
+  final bool clearTextAfterDone;
 
   PinEntryTextField(
       {this.fields: 4,
@@ -16,7 +17,8 @@ class PinEntryTextField extends StatefulWidget {
       this.fieldWidth: 40.0,
       this.fontSize: 20.0,
       this.isTextObscure: false,
-      this.showFieldAsBox: false})
+      this.showFieldAsBox: false,
+      this.clearTextAfterDone: true})
       : assert(fields > 0);
 
   @override
@@ -85,13 +87,15 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
           if (i + 1 != widget.fields) {
             FocusScope.of(context).requestFocus(_focusNodes[i + 1]);
           } else {
-            clearTextFields();
+            if(widget.clearTextAfterDone)
+              clearTextFields();
             FocusScope.of(context).requestFocus(_focusNodes[0]);
             widget.onSubmit(_pin.join());
           }
         },
         onSubmitted: (String str) {
-          clearTextFields();
+          if(widget.clearTextAfterDone)
+            clearTextFields();
           widget.onSubmit(_pin.join());
         },
       ),
